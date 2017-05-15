@@ -180,9 +180,9 @@
 		url = arg0;
 		if (params) {
 			if (url.indexOf('?') != -1) {
-				url += '&' + stringify(params);
+				url += '&' + stringify(params, true);
 			} else {
-				url += '?' + stringify(params);
+				url += '?' + stringify(params, true);
 			}
 		}
 		request({
@@ -212,9 +212,9 @@
 		url = arg0;
 		if (params) {
 			if (url.indexOf('?') != -1) {
-				url += '&' + stringify(params);
+				url += '&' + stringify(params, true);
 			} else {
-				url += '?' + stringify(params);
+				url += '?' + stringify(params, true);
 			}
 		}
 		request({
