@@ -113,25 +113,25 @@
 							data = xhr.responseText;
 						}
 					}
-					success(data, xhr.statusText, xhr);
+					success(data, xhr.status, xhr);
 				} else {
 					var e = new Error(xhr.responseText);
-					error(xhr, xhr.statusText, e);
+					error(xhr, xhr.status, e);
 				}
-				complete(xhr, xhr.statusText);
+				complete(xhr, xhr.status);
 			}
 		};
 		
 		xhr.onerror = function (e) {
-			error(xhr, xhr.statusText, e);
-			complete(xhr, xhr.statusText);
+			error(xhr, xhr.status, e);
+			complete(xhr, xhr.status);
 		};
 		
 		if (timeout) {
 			xhr.timeout = timeout;
 			xhr.ontimeout = function (e) {
 				ontimeout(e, xhr);
-				complete(xhr, xhr.statusText);
+				complete(xhr, xhr.status);
 			};
 		}
 
