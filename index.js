@@ -73,6 +73,7 @@
 		 * accept 'application/json',
 		 * timeout,
 		 * async flag,
+		 * withCredentials false
 		 * success(data, status, xhr),
 		 * error(xhr, status, err),
 		 * complete(xhr, status),
@@ -92,6 +93,7 @@
 			},
 			timeout = opts.timeout,
 			async = typeof opts.async != 'undefined' ? opts.async : true,
+			withCredentials = opts.withCredentials || false,
 			success = opts.success || function () {},
 			error = opts.error || function () {},
 			complete = opts.complete || function () {},
@@ -126,6 +128,8 @@
 			error(xhr, xhr.status, e);
 			complete(xhr, xhr.status);
 		};
+
+		xhr.withCredentials = withCredentials;
 		
 		if (timeout) {
 			xhr.timeout = timeout;
