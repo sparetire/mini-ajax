@@ -1,5 +1,6 @@
 demo
 .npmignore
 .eslintrc.js
+.eslintignore
 .jsbeautifyrc
 .vscode
