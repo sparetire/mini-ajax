@@ -106,14 +106,10 @@
 			var data = null;
 			if (xhr.readyState === 4) {
 				if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-					if (dataType === 'json') {
+					try {
 						data = JSON.parse(xhr.responseText);
-					} else {
-						try {
-							data = JSON.parse(xhr.responseText);
-						} catch (e) {
-							data = xhr.responseText;
-						}
+					} catch (e) {
+						data = xhr.responseText;
 					}
 					success(data, xhr.status, xhr);
 				} else {
@@ -123,14 +119,14 @@
 				complete(xhr, xhr.status);
 			}
 		};
-		
+
 		xhr.onerror = function (e) {
 			error(xhr, xhr.status, e);
 			complete(xhr, xhr.status);
 		};
 
 		xhr.withCredentials = withCredentials;
-		
+
 		if (timeout) {
 			xhr.timeout = timeout;
 			xhr.ontimeout = function (e) {
@@ -246,7 +242,7 @@
 			}
 		});
 	};
-	
+
 	request.put = function (url, params, callback) {
 		request({
 			url: url,
