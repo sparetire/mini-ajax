@@ -1,6 +1,6 @@
 {
   "name": "mini-ajax",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple ajax library",
   "main": "index.js",
   "scripts": {
