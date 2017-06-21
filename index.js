@@ -77,7 +77,7 @@
 		 * success(data, status, xhr),
 		 * error(xhr, status, err),
 		 * complete(xhr, status),
-		 * ontimeout(err, xhr)
+		 * onTimeout(err, xhr)
 		 * beforeSend(xhr)
 		 */
 		var url = opts.url,
@@ -97,7 +97,7 @@
 			success = opts.success || function () {},
 			error = opts.error || function () {},
 			complete = opts.complete || function () {},
-			ontimeout = opts.ontimeout || function () {},
+			onTimeout = opts.onTimeout || function () {},
 			beforeSend = opts.beforeSend;
 
 		var xhr = createXHR();
@@ -130,7 +130,7 @@
 		if (timeout) {
 			xhr.timeout = timeout;
 			xhr.ontimeout = function (e) {
-				ontimeout(e, xhr);
+				onTimeout(e, xhr);
 				complete(xhr, xhr.status);
 			};
 		}
