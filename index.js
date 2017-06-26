@@ -145,7 +145,7 @@
 			beforeSend(xhr);
 		}
 
-		if (method === 'post' || method === 'put') {
+		if (method === 'post' || method === 'put' || method === 'patch') {
 			if (typeof data === 'string' ||
 				data instanceof FormData ||
 				data instanceof Blob ||
@@ -248,6 +248,20 @@
 			url: url,
 			data: params,
 			method: 'put',
+			success: function (data, status, xhr) {
+				callback(null, data, xhr);
+			},
+			error: function (xhr, status, err) {
+				callback(err, null, xhr);
+			}
+		});
+	};
+
+	request.patch = function (url, params, callback) {
+		request({
+			url: url,
+			data: params,
+			method: 'patch',
 			success: function (data, status, xhr) {
 				callback(null, data, xhr);
 			},
