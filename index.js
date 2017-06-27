@@ -81,7 +81,7 @@
 		 * beforeSend(xhr)
 		 */
 		var url = opts.url,
-			method = opts.method && opts.method.toLowerCase() || 'get',
+			method = opts.method && opts.method.toUpperCase() || 'GET',
 			data = opts.data || null,
 			contentType = opts.contentType ||
 			'application/x-www-form-urlencoded; charset=UTF-8',
@@ -145,7 +145,7 @@
 			beforeSend(xhr);
 		}
 
-		if (method === 'post' || method === 'put' || method === 'patch') {
+		if (method === 'POST' || method === 'PUT' || method === 'PATCH') {
 			if (typeof data === 'string' ||
 				data instanceof FormData ||
 				data instanceof Blob ||
@@ -187,7 +187,7 @@
 		}
 		request({
 			url: url,
-			method: 'get',
+			method: 'GET',
 			success: function (data, status, xhr) {
 				callback(null, data, xhr);
 			},
@@ -219,7 +219,7 @@
 		}
 		request({
 			url: url,
-			method: 'delete',
+			method: 'DELETE',
 			success: function (data, status, xhr) {
 				callback(null, data, xhr);
 			},
@@ -233,7 +233,7 @@
 		request({
 			url: url,
 			data: params,
-			method: 'post',
+			method: 'POST',
 			success: function (data, status, xhr) {
 				callback(null, data, xhr);
 			},
@@ -247,7 +247,7 @@
 		request({
 			url: url,
 			data: params,
-			method: 'put',
+			method: 'PUT',
 			success: function (data, status, xhr) {
 				callback(null, data, xhr);
 			},
@@ -261,7 +261,7 @@
 		request({
 			url: url,
 			data: params,
-			method: 'patch',
+			method: 'PATCH',
 			success: function (data, status, xhr) {
 				callback(null, data, xhr);
 			},
